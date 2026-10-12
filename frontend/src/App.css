@@ -1,35 +1,123 @@
+/* Page */
+body {
+  margin: 0;
+  background: #f5f5f7;
+  font-family: Arial, sans-serif;
+}
+
 .App {
   text-align: center;
 }
 
+/* Responsive card grid */
+.product-grid {
+  width: min(1100px, calc(100% - 32px));
+  margin: 48px auto 32px; /* top, sides, bottom */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+/* Product card */
+.product-card {
+  width: 100%;
+  max-width: 260px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #e9e9ed;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgb(20 20 40 / 6%);
+  text-align: left;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
 
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgb(20 20 40 / 12%);
+}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Card image */
+.product-card-image {
+  display: block;
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+/* Card content */
+.product-card-body {
+  padding: 16px;
+}
+
+.product-category {
+  margin: 0 0 8px;
+  color: #777;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.product-title {
+  margin: 0 0 8px;
+  color: #20202a;
+  font-size: 1.1rem;
+}
+
+.product-description {
+  margin: 0 0 16px;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.product-button {
+  display: inline-block;
+  padding: 9px 13px;
+  border-radius: 8px;
+  background: #20202a;
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 180ms ease;
+}
+
+.product-button:hover {
+  background: #454555;
+}
+.navbar{
+  background-color: #111184;
+}
+/* Small screens */
+@media (max-width: 480px) {
+  .product-grid {
+    width: calc(100% - 24px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 20px auto;
+  }
+
+  .product-card {
+    max-width: none;
+    border-radius: 12px;
+  }
+
+  .product-card-image {
+    height: 140px;
+  }
+
+  .product-card-body {
+    padding: 12px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  .product-button {
+    transition: none;
   }
-  to {
-    transform: rotate(360deg);
+
+  .product-card:hover {
+    transform: none;
   }
 }

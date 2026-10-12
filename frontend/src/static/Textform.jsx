@@ -10,16 +10,19 @@ function Textform(props) {
   const handleUpClick = () => {
     let newtext = text.toUpperCase();
     setText(newtext);
+    props.showAlert("Converted to UpperCase","success");
   };
 
   const handlelowClick = () => {
     let newtext = text.toLowerCase();
     setText(newtext);
+    props.showAlert("Converted to lowerCase","success");
   };
   
   const clear = () => {
     let newtext = "";
     setText(newtext);
+    props.showAlert("Clened Text Box!","success");
   };
 
 
@@ -37,6 +40,7 @@ function Textform(props) {
     ];
     const randomIndex = Math.floor(Math.random() * fonts.length);
     setFontFamily(fonts[randomIndex]);
+    props.showAlert("Changed Font Style!","success");
   }
   const handleCopytext = () => {
     console.log("I am Copy");
@@ -44,6 +48,7 @@ function Textform(props) {
     text.select();
     text.setSelectionRange(0,9999);
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Text Copied","success");
   }
   
 
@@ -67,7 +72,7 @@ function Textform(props) {
           <button type="button" className="btn btn-danger  my-4 mx-2" onClick={handleUpClick}>Convert to Lowercase</button>
           <button type="button" className="btn btn-danger  my-4 mx-2" onClick={handlelowClick}>Convert to Lowercase</button>
           <button type="button" className="btn btn-danger  my-4 mx-2" onClick={clear}>Clear</button>
-          <button type="button" className="btn btn-danger  my-4 mx-2" onClick={handleColorClick}>ChangeColor</button>
+          <button type="button" className="btn btn-danger  my-4 mx-2" onClick={handleColorClick}>Font Style</button>
           <button type="button" className="btn btn-danger  my-4 mx-2" onClick={handleFontClick}>FontChange</button>
           <button type="button" className="btn btn-danger  my-4 mx-2" onClick={handleCopytext}>Copy text</button>
         </div>
@@ -84,8 +89,6 @@ function Textform(props) {
       </div>
       <div className="container"><p>{text.length>0?text:"Enter text For Preview"}</p></div>
     </div>
-      
-
     </>
   );
 }
